@@ -45,6 +45,11 @@
       };
     };
 
+    hwinfo = {
+      url = "github:juliuskoskela/qemu-acpi-hwinfo/82380d3";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ###
     # Flake and repo structuring configurations
     ###

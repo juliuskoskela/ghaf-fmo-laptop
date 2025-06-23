@@ -33,6 +33,7 @@
       inputs.ghaf.nixosModules.hardware-lenovo-x1-carbon-gen11
       ./resources/lenovo-x1-carbon-gen11.nix
       ./usb
+      inputs.hwinfo.nixosModules.host
     ];
     hardware-lenovo-x1-carbon-gen12.imports = [
       inputs.ghaf.nixosModules.hardware-lenovo-x1-carbon-gen12

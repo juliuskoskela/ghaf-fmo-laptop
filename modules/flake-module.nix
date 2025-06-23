@@ -1,6 +1,6 @@
 # Copyright 2022-2025 TII (SSRC) and the Ghaf contributors
 # SPDX-License-Identifier: Apache-2.0
-{
+{ inputs, ... }: {
   imports = [
     ./hardware/flake-module.nix
     ./fmo/flake-module.nix
@@ -11,7 +11,13 @@
     host.imports = [ ./microvm/host.nix ];
     netvm.imports = [ ./microvm/netvm.nix ];
     guivm.imports = [ ./microvm/guivm.nix ];
-    dockervm.imports = [ ./microvm/docker/vm.nix ];
+    dockervm.imports = [
+      ./microvm/docker/vm.nix
+      inputs.hwinfo.nixosModules.guest
+      {
+        acpi-hwinfo.guest.enable = true;
+      }
+    ];
     msgvm.imports = [ ./microvm/msg/vm.nix ];
   };
 }

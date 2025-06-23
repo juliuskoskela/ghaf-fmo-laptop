@@ -1,11 +1,10 @@
 # Copyright 2022-2025 TII (SSRC) and the Ghaf contributors
 # SPDX-License-Identifier: Apache-2.0
 #
-{
-  config,
-  pkgs,
-  lib,
-  ...
+{ config
+, pkgs
+, lib
+, ...
 }:
 let
   inherit (lib)
@@ -16,19 +15,25 @@ let
 
   # Temporary until USB passthrough is fixed
   gnssExtraArgs = flatten (
-    mapAttrsToList (
-      n: v: if (strings.hasPrefix "gnss" n) then v else [ ]
-    ) config.ghaf.hardware.usb.external.qemuExtraArgs
+    mapAttrsToList
+      (
+        n: v: if (strings.hasPrefix "gnss" n) then v else [ ]
+      )
+      config.ghaf.hardware.usb.external.qemuExtraArgs
   );
   xboxExtraArgs = flatten (
-    mapAttrsToList (
-      n: v: if (strings.hasPrefix "xbox" n) then v else [ ]
-    ) config.ghaf.hardware.usb.external.qemuExtraArgs
+    mapAttrsToList
+      (
+        n: v: if (strings.hasPrefix "xbox" n) then v else [ ]
+      )
+      config.ghaf.hardware.usb.external.qemuExtraArgs
   );
   crazyflieExtraArgs = flatten (
-    mapAttrsToList (
-      n: v: if (strings.hasPrefix "crazy" n) then v else [ ]
-    ) config.ghaf.hardware.usb.external.qemuExtraArgs
+    mapAttrsToList
+      (
+        n: v: if (strings.hasPrefix "crazy" n) then v else [ ]
+      )
+      config.ghaf.hardware.usb.external.qemuExtraArgs
   );
 
   appuser = config.ghaf.users.appUser.name;

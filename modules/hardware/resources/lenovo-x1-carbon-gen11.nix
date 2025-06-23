@@ -39,6 +39,8 @@ in
       vcpu = mkForce 6;
     };
 
+    services.acpi-hwinfo.enable = true;
+
     ghaf.virtualization.microvm.appvm.vms = {
       # Docker VM
       docker = {
